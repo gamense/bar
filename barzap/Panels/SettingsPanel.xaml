@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="barzap.Panels.SettingsPanel"
+             DataContext="{Binding}"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:models="clr-namespace:barzap.Models"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}"
+                            x:Key="ThemeName">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="models:ThemeName" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+
+    <StackPanel Margin="10 0">
+
+        <Label FontSize="24px">Save</Label>
+        <Button Name="SaveButton" Click="SaveButton_Click" Background="Green">Save</Button>
+        
+        <Label FontSize="24">Theme color</Label>
+        <StackPanel Orientation="Horizontal">
+            <RadioButton Checked="Light_Mode_RadioButton" Margin="10 4" Name="RadioButtonSettingsLightMode">Light</RadioButton>
+            <RadioButton Checked="Dark_Mode_RadioButton" Margin="10 4" Name="RadioButtonSettingsDarkMode">Dark</RadioButton>
+        </StackPanel>
+
+        <Label FontSize="24">Accent color</Label>
+        <ComboBox MinWidth="80" SelectionChanged="Theme_Selection_Changed_ComboBox"
+                      ItemsSource="{Binding Source={StaticResource ThemeName}}" Name="ComboBoxThemeColorSelection" />
+
+        <Label FontSize="36">Collar settings</Label>
+
+        <Label FontSize="14" ToolTip="The maximum shock value (1-15) the app will deliver">Max shock strength</Label>
+        <mah:NumericUpDown Name="Settings_MaxShock" ValueChanged="Settings_MaxShock_ValueChanged" Margin="0 0 0 10"
+                           Minimum="1" Maximum="15" Interval="1" StringFormat="N0"></mah:NumericUpDown>
+        
+        <Label FontSize="36">Shock settings</Label>
+
+        <mah:ToggleSwitch Name="Settings_PassiveDischarge" Toggled="Settings_PassiveDischarge_Toggled" Margin="0 10"
+                          ToolTip="Will shock charge passively discharge overtime?"
+                          Header="Passive charge" OffContent="Disabled" OnContent="Enabled"></mah:ToggleSwitch>
+
+        <mah:ToggleSwitch Name="Settings_PassiveDischargeEnergyScaling" Toggled="Settings_PassiveDischargeEnergyScaling_Toggled" Margin="0 10"
+                          ToolTip="If true, the passive discharge will discharge at the maximum value when energy is full"
+                          Header="Will passive discharge scale with energy?"></mah:ToggleSwitch>
+
+        <Label FontSize="14">Passive discharge minimum</Label>
+        <mah:NumericUpDown Name="Settings_PassiveDischargeMinimum" ValueChanged="Settings_PassiveDischargeMinimum_ValueChanged" Margin="0 0 0 10"
+                           ToolTip="Minimum discharge that will occur when power is empty, or if discharge does not scale"
+                           Minimum="0" Maximum="1" Interval="0.01" StringFormat="N2"></mah:NumericUpDown>
+
+        <Label FontSize="14">Passive discharge maximum</Label>
+        <mah:NumericUpDown Name="Settings_PassiveDischargeMaximum" ValueChanged="Settings_PassiveDischargeMaximum_ValueChanged" Margin="0 0 0 10"
+                           ToolTip="Maximum discharge when power is full"
+                           Minimum="0" Maximum="1" Interval="0.01" StringFormat="N2"></mah:NumericUpDown>
+
+        <mah:ToggleSwitch Name="Settings_EnemyKillsDischarge" Toggled="Settings_EnemyKillsDischarge_Toggled" Margin="0 10"
+                          ToolTip="Will killing an enemy discharge the shock meter"
+                          Header="Enemy kills discharge"></mah:ToggleSwitch>
+
+        <Label FontSize="14">Enemy kills discharge multiplier</Label>
+        <mah:NumericUpDown Name="Settings_EnemyKillsDischargeMultiplier" ValueChanged="Settings_EnemyKillsDischargeMultiplier_ValueChanged" Margin="0 0 0 10"
+                           ToolTip="How much to scale enemy kills by when discharging"
+                           Minimum="0" Maximum="5" Interval="0.10" StringFormat="N2"></mah:NumericUpDown>
+
+    </StackPanel>
+
+</UserControl>
