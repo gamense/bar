@@ -1,0 +1,27 @@
+﻿<mah:MetroWindow x:Class="barzap.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+            xmlns:local="clr-namespace:barzap"
+            xmlns:panels="clr-namespace:barzap.Panels"
+            mc:Ignorable="d"
+            Title="Tachyon Enforcer Hub" Height="655" Width="800">
+    
+    <ScrollViewer>
+        <Grid>
+
+            <mah:MetroTabControl Name="Header">
+                <mah:MetroTabItem Header="Status">
+                    <panels:ConnectPanel></panels:ConnectPanel>
+                </mah:MetroTabItem>
+                <Separator/>
+                <mah:MetroTabItem Header="Settings">
+                    <panels:SettingsPanel></panels:SettingsPanel>
+                </mah:MetroTabItem>
+            </mah:MetroTabControl>
+
+        </Grid>
+    </ScrollViewer>
+</mah:MetroWindow>

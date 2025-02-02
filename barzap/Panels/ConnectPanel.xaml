@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="barzap.Panels.ConnectPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+
+        <StackPanel Name="Body">
+            <Button Name="Safety_Active" Margin="5" FontSize="16" Background="#884444" BorderThickness="2" BorderBrush="Red" Visibility="Collapsed">
+                Safety off; Shock collar is live
+            </Button>
+
+            <Button Name="Button_SafetyOn" Click="Button_SafetyOn_Click" Margin="5" Background="LightGreen" Foreground="Black" FontSize="14" IsEnabled="False">
+                Enable safety
+            </Button>
+
+            <Button Name="Button_SafetyOff" Click="Button_SafetyOff_Click" Margin="5" Background="Red" FontSize="14">
+                Disable safety
+            </Button>
+
+            <Border Visibility="Visible" BorderThickness="1" BorderBrush="#777777" Margin="10" />
+
+            <TextBlock FontSize="36px" Margin="10px 0px" Text="Shock"/>
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="24px" Margin="10px 1px" Text="Charge" Grid.Row="0" Grid.Column="0" />
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="ChargeProgress" Grid.Row="0" Grid.Column="1" />
+
+                <mah:MetroProgressBar Margin="10px 1px" Height="36px" Name="ChargeBar" Grid.Row="1" Grid.ColumnSpan="2" />
+
+                <TextBlock FontSize="24px" Margin="10px 1px" Text="Shock charge" Grid.Row="2" Grid.Column="0"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="ShockAmount" Grid.Row="2" Grid.Column="1"/>
+
+                <TextBlock FontSize="24px" Margin="10px 1px" Text="Discharge" Grid.Row="3" Grid.Column="0"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="DischargeRate" Grid.Row="3" Grid.Column="1"/>
+            </Grid>
+
+            <Border Visibility="Visible" BorderThickness="1" BorderBrush="#777777" Margin="10" />
+
+            <TextBlock Margin="10px" Name="App_Status" />
+
+            <Border Visibility="Visible" BorderThickness="1" BorderBrush="#777777" Margin="10 0 10 0" />
+
+            <TextBlock FontSize="36px" Margin="10px 0px" Text="Unit cost"/>
+            <Grid Margin="0 0 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="24px" Margin="10px 1px" Text="Metal" Grid.Row="0" Grid.Column="0" />
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="MetalAmount" Grid.Row="0" Grid.Column="1" Text="0" />
+
+                <TextBlock FontSize="24px" Margin="10px 1px" Text="Energy" Grid.Row="1" Grid.Column="0" />
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="EnergyAmount" Grid.Row="1" Grid.Column="1" Text="0" />
+            </Grid>
+
+            <Border Visibility="Visible" BorderThickness="1" BorderBrush="#777777" Margin="10" />
+
+            <TextBlock FontSize="36px" Margin="10 0" Text="Economy"/>
+            <Grid Margin="0 0 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="16px" FontWeight="Light" Margin="10px 1px" Text="Resource" Grid.Row="0" Grid.Column="0" />
+                <TextBlock FontSize="16px" FontWeight="Light" Margin="10px 1px" Text="Stored" Grid.Row="0" Grid.Column="1"/>
+                <TextBlock FontSize="16px" FontWeight="Light" Margin="10px 1px" Text="Max" Grid.Row="0" Grid.Column="2"/>
+                <TextBlock FontSize="16px" FontWeight="Light" Margin="10px 1px" Text="Income" Grid.Row="0" Grid.Column="3"/>
+                <TextBlock FontSize="16px" FontWeight="Light" Margin="10px 1px" Text="Expense" Grid.Row="0" Grid.Column="4"/>
+
+                <TextBlock FontSize="24px" Margin="10px 1px" Text="Metal" Grid.Row="1" Grid.Column="0" />
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="MetalCurrent" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="MetalStored" Grid.Row="1" Grid.Column="2"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="MetalIncome" Grid.Row="1" Grid.Column="3" Foreground="LightGreen"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="MetalExpense" Grid.Row="1" Grid.Column="4" Foreground="Red" />
+
+                <TextBlock FontSize="24px" Margin="10px 1px" Text="Energy" Grid.Row="2" Grid.Column="0" />
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="EnergyCurrent" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="EnergyStored" Grid.Row="2" Grid.Column="2"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="EnergyIncome" Grid.Row="2" Grid.Column="3" Foreground="LightGreen"/>
+                <TextBlock FontSize="24px" Margin="10px 1px" Name="EnergyExpense" Grid.Row="2" Grid.Column="4" Foreground="Red"/>
+            </Grid>
+
+            <Border Visibility="Visible" BorderThickness="1" BorderBrush="#777777" Margin="10" />
+
+
+            <Button Name="Button_Connect" Click="Button_Connect_Click" Margin="5">
+                Connect
+            </Button>
+
+            <Button Name="Button_Disconnect" Click="Button_Disconnect_Click" Margin="5">
+                Disconnect
+            </Button>
+
+            <Button Name="Button_Tone" Click="Button_Tone_Click" Margin="5">
+                Tone
+            </Button>
+
+            <Button Name="Button_Vibrate" Click="Button_Vibrate_Click" Margin="5">
+                Vibrate
+            </Button>
+
+            <Button Name="Button_Shock" Click="Button_Shock_Click" Margin="5">
+                !! Shock !!
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
